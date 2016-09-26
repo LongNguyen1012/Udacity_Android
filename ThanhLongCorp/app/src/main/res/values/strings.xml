@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Thanh Long Corp</string>
+    <string name="product_header_text">Product and Services:</string>
+    <string name="product_detail_text_1">Domestic and international freight forwarding</string>
+    <string name="product_detail_text_2">Cargo stocktaking service</string>
+    <string name="product_detail_text_3">Import/export cargo freight</string>
+    <string name="contact_text">Contact Us:</string>
+    <string name="contact_detail_text_1">182B7 Phan Van Tri, Binh Thanh, HCMC, VietNam</string>
+    <string name="contact_detail_text_2">(84) 3 843 1590</string>
+    <string name="contact_detail_text_3">quynhmanager@tlclogistics.vn</string>
 </resources>

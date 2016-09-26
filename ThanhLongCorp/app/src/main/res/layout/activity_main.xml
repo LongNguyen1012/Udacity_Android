@@ -29,9 +29,9 @@
             android:padding="0dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
-            android:text="Product and Services:"
+            android:text="@string/product_header_text"
             android:textSize="24sp"
-            android:id="@+id/producttextView"
+            android:id="@+id/product_textview"
             android:textStyle="bold"
             android:textColor="#f44336" />
 
@@ -43,8 +43,8 @@
             android:layout_marginLeft="16dp"
             android:layout_marginBottom="8dp"
             android:textSize="14sp"
-            android:text="Domestic and international freight forwarding"
-            android:id="@+id/textView2" />
+            android:text="@string/product_detail_text_1"
+            android:id="@+id/product_detail_textview_1" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -54,8 +54,8 @@
             android:layout_marginBottom="8dp"
             android:textSize="14sp"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Cargo stocktaking service"
-            android:id="@+id/textView7" />
+            android:text="@string/product_detail_text_2"
+            android:id="@+id/product_detail_textview_2" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -66,8 +66,8 @@
             android:layout_marginBottom="8dp"
             android:textSize="14sp"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Import/export cargo freight"
-            android:id="@+id/textView8" />
+            android:text="@string/product_detail_text_3"
+            android:id="@+id/product_detail_textview_1" />
     </LinearLayout>
 
     <LinearLayout
@@ -82,9 +82,9 @@
         android:layout_weight="1"
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="8dp"
-        android:text="Contact Us:"
+        android:text="@string/contact_text"
         android:textSize="24sp"
-        android:id="@+id/textView3"
+        android:id="@+id/contact_textview"
         android:textStyle="bold"
         android:textColor="#f44336" />
 
@@ -96,8 +96,8 @@
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="8dp"
         android:textSize="14sp"
-        android:text="182B7 Phan Van Tri, Binh Thanh, HCMC, VietNam"
-        android:id="@+id/textView4" />
+        android:text="@string/contact_detail_text_1"
+        android:id="@+id/contact_detail_textview_1" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -107,8 +107,9 @@
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="8dp"
         android:textSize="14sp"
-        android:text="(84) 3 843 1590"
-        android:id="@+id/textView5" />
+        android:autoLink="phone"
+        android:text="@string/contact_detail_text_2"
+        android:id="@+id/contact_detail_textview_2" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -118,8 +119,8 @@
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="8dp"
         android:textSize="14sp"
-        android:text="quynhmanager@tlclogistics.vn"
-        android:id="@+id/textView6" />
+        android:text="@string/contact_detail_text_3"
+        android:id="@+id/contact_detail_textview_3" />
 
     </LinearLayout>
 
