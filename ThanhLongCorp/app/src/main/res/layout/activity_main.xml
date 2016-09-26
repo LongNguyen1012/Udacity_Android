@@ -6,9 +6,10 @@
     android:orientation="vertical"
     tools:context="com.example.android.thanhlongcorp.MainActivity">
 
+
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:scaleType="centerCrop"
         android:id="@+id/imageView"
@@ -16,7 +17,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="vertical"
         android:layout_weight="1">
 
@@ -41,7 +42,7 @@
             android:layout_weight="1"
             android:layout_marginLeft="16dp"
             android:layout_marginBottom="8dp"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:text="Domestic and international freight forwarding"
             android:id="@+id/textView2" />
 
@@ -51,7 +52,7 @@
             android:layout_weight="1"
             android:layout_marginLeft="16dp"
             android:layout_marginBottom="8dp"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Cargo stocktaking service"
             android:id="@+id/textView7" />
@@ -63,7 +64,7 @@
             android:layout_weight="1"
             android:layout_marginLeft="16dp"
             android:layout_marginBottom="8dp"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Import/export cargo freight"
             android:id="@+id/textView8" />
@@ -71,7 +72,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="vertical"
         android:layout_weight="1">
 
@@ -94,8 +95,8 @@
         android:padding="0dp"
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="8dp"
-        android:textSize="16sp"
-        android:text="182B7 Phan Van Tri, Binh Thanh, HCMC, Vietnam"
+        android:textSize="14sp"
+        android:text="182B7 Phan Van Tri, Binh Thanh, HCMC, VietNam"
         android:id="@+id/textView4" />
 
     <TextView
@@ -105,7 +106,7 @@
         android:layout_weight="1"
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="8dp"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:text="(84) 3 843 1590"
         android:id="@+id/textView5" />
 
@@ -116,7 +117,7 @@
         android:layout_weight="1"
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="8dp"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:text="quynhmanager@tlclogistics.vn"
         android:id="@+id/textView6" />
 
