@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.funtrivia.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <TextView
+            style="@style/HeaderTextStyle"
+            android:text="Which US state is named on the label of a Jack Daniels bottle?" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:id="@+id/Tennessee"
+                style="@style/MultipleChoice"
+                android:text="Tennessee" />
+
+            <RadioButton
+                style="@style/MultipleChoice"
+                android:text="New York" />
+
+            <RadioButton
+                style="@style/MultipleChoice"
+                android:text="California" />
+
+            <RadioButton
+                style="@style/MultipleChoice"
+                android:text="Ohio" />
+        </RadioGroup>
+
+        <TextView
+            style="@style/HeaderTextStyle"
+            android:text="A phlebotomist extracts what from the human body?" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton
+                style="@style/MultipleChoice"
+                android:text="Oxygen" />
+
+            <RadioButton
+                style="@style/MultipleChoice"
+                android:text="Water" />
+
+            <RadioButton
+                style="@style/MultipleChoice"
+                android:text="Blood"
+                android:id="@+id/Blood"/>
+
+            <RadioButton
+                style="@style/MultipleChoice"
+                android:text="Skin cell" />
+        </RadioGroup>
+
+        <TextView
+            style="@style/HeaderTextStyle"
+            android:text="How many feet are there in a fathom?" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton
+                style="@style/MultipleChoice"
+                android:text="Five" />
+
+            <RadioButton
+                style="@style/MultipleChoice"
+                android:text="Six"
+                android:id="@+id/Six"/>
+
+            <RadioButton
+                style="@style/MultipleChoice"
+                android:text="Seven" />
+
+            <RadioButton
+                style="@style/MultipleChoice"
+                android:text="Eight" />
+        </RadioGroup>
+
+        <TextView
+            style="@style/HeaderTextStyle"
+            android:text="Granadilla is another name for which fruit?" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Type your answer here"
+            android:id="@+id/Passionfruit" />
+
+        <TextView
+            style="@style/HeaderTextStyle"
+            android:text="Nariyal is the Indian term for which nut?" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Type your answer here"
+            android:id="@+id/Coconut" />
+
+        <TextView
+            style="@style/HeaderTextStyle"
+            android:text="Which of these are cities in Vietnam?" />
+
+        <CheckBox
+            style="@style/CheckBox"
+            android:text="Ho Chi Minh"
+            android:id="@+id/HoChiMinh" />
+
+        <CheckBox
+            style="@style/CheckBox"
+            android:text="Nguyen Tan Dung" />
+
+        <CheckBox
+            style="@style/CheckBox"
+            android:text="Hanoi"
+            android:id="@+id/Hanoi"/>
+
+        <TextView
+            style="@style/HeaderTextStyle"
+            android:text="In which county of the UK is Bramber Castle?" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Type your answer here"
+            android:id="@+id/WestSussex" />
+
+        <TextView
+            style="@style/HeaderTextStyle"
+            android:text="What types of fruit that go together with pen?" />
+
+        <CheckBox
+            style="@style/CheckBox"
+            android:text="Pineapple"
+            android:id="@+id/Pineapple"/>
+
+        <CheckBox
+            style="@style/CheckBox"
+            android:text="Mangle" />
+
+        <CheckBox
+            style="@style/CheckBox"
+            android:text="Apple"
+            android:id="@+id/Apple"/>
+
+        <CheckBox
+            style="@style/CheckBox"
+            android:text="Banana"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SUBMIT"
+            android:layout_marginTop="16dp"
+            android:id="@+id/button"
+            android:layout_gravity="center_horizontal"
+            android:onClick="CheckAnswer"/>
+
+    </LinearLayout>
+</ScrollView>
