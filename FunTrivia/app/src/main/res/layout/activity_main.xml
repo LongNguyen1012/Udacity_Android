@@ -16,7 +16,7 @@
 
         <TextView
             style="@style/HeaderTextStyle"
-            android:text="Which US state is named on the label of a Jack Daniels bottle?" />
+            android:text="@string/question_1"/>
 
         <RadioGroup
             android:layout_width="wrap_content"
@@ -24,74 +24,74 @@
             <RadioButton
                 android:id="@+id/Tennessee"
                 style="@style/MultipleChoice"
-                android:text="Tennessee" />
+                android:text="@string/option_1_question_1" />
 
             <RadioButton
                 style="@style/MultipleChoice"
-                android:text="New York" />
+                android:text="@string/option_2_question_1" />
 
             <RadioButton
                 style="@style/MultipleChoice"
-                android:text="California" />
+                android:text="@string/option_3_question_1" />
 
             <RadioButton
                 style="@style/MultipleChoice"
-                android:text="Ohio" />
+                android:text="@string/option_4_question_1" />
         </RadioGroup>
 
         <TextView
             style="@style/HeaderTextStyle"
-            android:text="A phlebotomist extracts what from the human body?" />
+            android:text="@string/question_2" />
 
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <RadioButton
                 style="@style/MultipleChoice"
-                android:text="Oxygen" />
+                android:text="@string/option_1_question_2" />
 
             <RadioButton
                 style="@style/MultipleChoice"
-                android:text="Water" />
+                android:text="@string/option_2_question_2" />
 
             <RadioButton
                 style="@style/MultipleChoice"
-                android:text="Blood"
+                android:text="@string/option_3_question_2"
                 android:id="@+id/Blood"/>
 
             <RadioButton
                 style="@style/MultipleChoice"
-                android:text="Skin cell" />
+                android:text="@string/option_4_question_2" />
         </RadioGroup>
 
         <TextView
             style="@style/HeaderTextStyle"
-            android:text="How many feet are there in a fathom?" />
+            android:text="@string/question_3" />
 
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <RadioButton
                 style="@style/MultipleChoice"
-                android:text="Five" />
+                android:text="@string/option_1_question_3" />
 
             <RadioButton
                 style="@style/MultipleChoice"
-                android:text="Six"
+                android:text="@string/option_2_question_3"
                 android:id="@+id/Six"/>
 
             <RadioButton
                 style="@style/MultipleChoice"
-                android:text="Seven" />
+                android:text="@string/option_3_question_3" />
 
             <RadioButton
                 style="@style/MultipleChoice"
-                android:text="Eight" />
+                android:text="@string/option_4_question_3" />
         </RadioGroup>
 
         <TextView
             style="@style/HeaderTextStyle"
-            android:text="Granadilla is another name for which fruit?" />
+            android:text="@string/question_4" />
 
         <EditText
             android:layout_width="match_parent"
@@ -101,7 +101,7 @@
 
         <TextView
             style="@style/HeaderTextStyle"
-            android:text="Nariyal is the Indian term for which nut?" />
+            android:text="@string/question_5" />
 
         <EditText
             android:layout_width="match_parent"
@@ -111,25 +111,26 @@
 
         <TextView
             style="@style/HeaderTextStyle"
-            android:text="Which of these are cities in Vietnam?" />
+            android:text="@string/question_6" />
 
         <CheckBox
             style="@style/CheckBox"
-            android:text="Ho Chi Minh"
+            android:text="@string/option_1_question_6"
             android:id="@+id/HoChiMinh" />
 
         <CheckBox
             style="@style/CheckBox"
-            android:text="Nguyen Tan Dung" />
+            android:text="@string/option_2_question_6"
+            android:id="@+id/Tandung" />
 
         <CheckBox
             style="@style/CheckBox"
-            android:text="Hanoi"
+            android:text="@string/option_3_question_6"
             android:id="@+id/Hanoi"/>
 
         <TextView
             style="@style/HeaderTextStyle"
-            android:text="In which county of the UK is Bramber Castle?" />
+            android:text="@string/question_7" />
 
         <EditText
             android:layout_width="match_parent"
@@ -148,7 +149,8 @@
 
         <CheckBox
             style="@style/CheckBox"
-            android:text="Mangle" />
+            android:text="Mangle"
+            android:id="@+id/Mangle"/>
 
         <CheckBox
             style="@style/CheckBox"
@@ -157,7 +159,8 @@
 
         <CheckBox
             style="@style/CheckBox"
-            android:text="Banana"/>
+            android:text="Banana"
+            android:id="@+id/Banana"/>
 
         <Button
             android:layout_width="wrap_content"

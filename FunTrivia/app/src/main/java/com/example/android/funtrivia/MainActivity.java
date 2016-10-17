@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import static com.example.android.funtrivia.R.id.WestSussex;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -20,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void CheckAnswer(View view) {
 
-        int Score = 0;
+        int score = 0;
 
         RadioButton Tennessee = (RadioButton) findViewById(R.id.Tennessee);
         RadioButton Blood = (RadioButton) findViewById(R.id.Blood);
@@ -29,47 +31,53 @@ public class MainActivity extends AppCompatActivity {
         EditText Coconut = (EditText) findViewById(R.id.Coconut);
         CheckBox HoChiMinh = (CheckBox) findViewById(R.id.HoChiMinh);
         CheckBox Hanoi = (CheckBox) findViewById(R.id.Hanoi);
+        CheckBox Tandung = (CheckBox) findViewById(R.id.Tandung);
         EditText WestSussex = (EditText) findViewById(R.id.WestSussex);
         CheckBox Apple = (CheckBox) findViewById(R.id.Apple);
         CheckBox Pineapple = (CheckBox) findViewById(R.id.Pineapple);
+        CheckBox Banana = (CheckBox) findViewById(R.id.Banana);
+        CheckBox Mangle = (CheckBox) findViewById(R.id.Mangle);
 
-        boolean Tennessee_check = Tennessee.isChecked();
-        boolean Blood_check = Blood.isChecked();
-        boolean Six_check = Six.isChecked();
-        boolean HoChiMinh_check = HoChiMinh.isChecked();
-        boolean Hanoi_check = Hanoi.isChecked();
-        boolean Apple_check = Apple.isChecked();
-        boolean Pineapple_check = Pineapple.isChecked();
-        String Passionfruit_text = Passionfruit.getText().toString();
-        String Coconut_text = Coconut.getText().toString();
-        String WestSussex_text = WestSussex.getText().toString();
 
-        if (Tennessee_check) {
-            Score += 1;
+        boolean tennessee_check = Tennessee.isChecked();
+        boolean blood_check = Blood.isChecked();
+        boolean six_check = Six.isChecked();
+        boolean hoChiMinh_check = HoChiMinh.isChecked();
+        boolean hanoi_check = Hanoi.isChecked();
+        boolean tan_dung_check = Tandung.isChecked();
+        boolean apple_check = Apple.isChecked();
+        boolean pineapple_check = Pineapple.isChecked();
+        boolean banana_check = Banana.isChecked();
+        boolean mangle_check = Mangle.isChecked();
+        String passionfruit_text = Passionfruit.getText().toString();
+        String coconut_text = Coconut.getText().toString();
+        String westSussex_text = WestSussex.getText().toString();
+
+        if (tennessee_check) {
+            score += 1;
         }
-        if (Blood_check) {
-            Score += 1;
+        if (blood_check) {
+            score += 1;
         }
-        if (Six_check) {
-            Score += 1;
+        if (six_check) {
+            score += 1;
         }
-        if ("passion fruit".equals(Passionfruit_text.toLowerCase())) {
-            Score += 1;
+        if ("passion fruit".equals(passionfruit_text.toLowerCase())) {
+            score += 1;
         }
-        if ("coconut".equals(Coconut_text.toLowerCase())) {
-            Score += 1;
+        if ("coconut".equals(coconut_text.toLowerCase())) {
+            score += 1;
         }
-        if (HoChiMinh_check & Hanoi_check) {
-            Score += 1;
+        if (hoChiMinh_check && hanoi_check && !tan_dung_check) {
+            score += 1;
         }
-        if ("west sussex".equals(WestSussex_text.toLowerCase())) {
-            Score += 1;
+        if ("west sussex".equals(westSussex_text.toLowerCase())) {
+            score += 1;
         }
-        if (Apple_check & Pineapple_check) {
-            Score += 1;
+        if (apple_check && pineapple_check && !banana_check && !mangle_check) {
+            score += 1;
         }
-        displayScore(view, Score);
-        Log.d("Fun", "" + (Passionfruit_text.toLowerCase() == "passion fruit"));
+        displayScore(view, score);
     }
 
     private void displayScore(View view, int Score) {

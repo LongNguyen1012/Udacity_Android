@@ -1,3 +1,38 @@
 <resources>
     <string name="app_name">FunTrivia</string>
+    <string name="question_1">Which US state is named on the label of a Jack Daniels bottle?</string>
+    <string name="option_1_question_1">Tennessee</string>
+    <string name="option_2_question_1">New York</string>
+    <string name="option_3_question_1">California</string>
+    <string name="option_4_question_1">Ohio</string>
+
+
+    <string name="question_2">A phlebotomist extracts what from the human body?</string>
+    <string name="option_1_question_2">Oxygen</string>
+    <string name="option_2_question_2">Water</string>
+    <string name="option_3_question_2">Blood</string>
+    <string name="option_4_question_2">Skin cell</string>
+
+    <string name="question_3">How many feet are there in a fathom?</string>
+    <string name="option_1_question_3">Five</string>
+    <string name="option_2_question_3">Six</string>
+    <string name="option_3_question_3">Seven</string>
+    <string name="option_4_question_3">Eight</string>
+
+    <string name="question_4">Granadilla is another name for which fruit?</string>
+
+    <string name="question_5">Nariyal is the Indian term for which nut?</string>
+
+    <string name="question_6">Which of these are cities in Vietnam?</string>
+    <string name="option_1_question_6">Ho Chi Minh</string>
+    <string name="option_2_question_6">Nguyen Tan Dung</string>
+    <string name="option_3_question_6">Hanoi</string>
+
+    <string name="question_7">In which county of the UK is Bramber Castle?</string>
+
+    <string name="question_8">What types of fruit that go together with pen?</string>
+    <string name="option_1_question_8">Pineapple</string>
+    <string name="option_2_question_8">Mangle</string>
+    <string name="option_3_question_8">Apple</string>
+    <string name="option_4_question_8">Banana</string>
 </resources>
