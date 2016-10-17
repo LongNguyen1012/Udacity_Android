@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_current_play"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.android.mysound.CurrentPlay">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:text="@string/NewReleaseNavigation"
+            style="@style/NavigationTextUnclicked"
+            android:id="@+id/new_release" />
+
+        <TextView
+            android:text="@string/VietPopNavigation"
+            style="@style/NavigationTextUnclicked"
+            android:id="@+id/viet_pop" />
+
+        <TextView
+            android:text="@string/CurrentPlayNavigation"
+            style="@style/NavigationTextClicked"
+            android:id="@+id/current_play" />
+
+    </LinearLayout>
+
+    <TextView
+        android:text="Artist"
+        style="@style/Artisheading"
+        android:id="@+id/artist_heading"/>
+
+    <TextView
+        style="@style/ArtistName"
+        android:id="@+id/artist_name" />
+
+    <TextView
+        android:text="Playing"
+        style="@style/SongHeading"
+        android:id="@+id/song_heading"/>
+
+    <TextView
+        style="@style/SongName"
+        android:id="@+id/song_name" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="3">
+
+        <Button
+            android:id="@+id/button_stop"
+            style="@style/ButtonStop"
+            android:text="Stop"/>
+
+    </RelativeLayout>
+</LinearLayout>

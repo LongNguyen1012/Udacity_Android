@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MySound</string>
+
+    <string name="NewReleaseNavigation">New Realeases</string>
+
+    <string name="VietPopNavigation">Viet Pop</string>
+
+    <string name="CurrentPlayNavigation">Playing Now</string>
+
+</resources>
