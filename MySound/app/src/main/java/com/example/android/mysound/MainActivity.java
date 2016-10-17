@@ -39,7 +39,6 @@ import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 public class MainActivity extends AppCompatActivity {
 
     static MediaPlayer mPlayer;
-    Button buttonStop;
 
     class StableArrayAdapter extends ArrayAdapter<String> {
 
@@ -83,10 +82,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //Intent intent = this.getIntent();
-
-        /* Obtain String from Intent  */
 
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
 
@@ -178,20 +173,20 @@ public class MainActivity extends AppCompatActivity {
         try {
             mPlayer.setDataSource(song_link);
         } catch (IllegalArgumentException e) {
-            Toast.makeText(getApplicationContext(), "You might not set the URI correctly!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), R.string.URIMessage, Toast.LENGTH_LONG).show();
         } catch (SecurityException e) {
-            Toast.makeText(getApplicationContext(), "You might not set the URI correctly!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), R.string.URIMessage, Toast.LENGTH_LONG).show();
         } catch (IllegalStateException e) {
-            Toast.makeText(getApplicationContext(), "You might not set the URI correctly!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), R.string.URIMessage, Toast.LENGTH_LONG).show();
         } catch (IOException e) {
             e.printStackTrace();
         }
         try {
             mPlayer.prepare();
         } catch (IllegalStateException e) {
-            Toast.makeText(getApplicationContext(), "You might not set the URI correctly!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), R.string.URIMessage, Toast.LENGTH_LONG).show();
         } catch (IOException e) {
-            Toast.makeText(getApplicationContext(), "You might not set the URI correctly!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), R.string.URIMessage, Toast.LENGTH_LONG).show();
         }
         mPlayer.start();
     }

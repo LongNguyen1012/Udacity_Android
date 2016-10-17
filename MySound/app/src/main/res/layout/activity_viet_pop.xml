@@ -27,13 +27,14 @@
             style="@style/NavigationTextUnclicked"
             android:id="@+id/current_play" />
 
-
-
     </LinearLayout>
 
+    <TextView
+        style="@style/ActivityDescription"
+        android:text="Top Vietnamese pop songs!"/>
+
     <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        style="@style/SongListView"
         android:id="@+id/viet_pop_listview" />
 
 </LinearLayout>

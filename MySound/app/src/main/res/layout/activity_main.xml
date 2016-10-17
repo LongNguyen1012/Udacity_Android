@@ -28,10 +28,12 @@
 
     </LinearLayout>
 
+    <TextView
+        style="@style/ActivityDescription"
+        android:text="Hot new songs just got released!"/>
 
     <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        style="@style/SongListView"
         android:id="@+id/new_song_listview"/>
 
 </LinearLayout>

@@ -7,4 +7,6 @@
 
     <string name="CurrentPlayNavigation">Playing Now</string>
 
+    <string name="URIMessage">You might not set the URI correctly!</string>
+
 </resources>

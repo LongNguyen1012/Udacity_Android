@@ -30,7 +30,7 @@
     <style name="ArtistName">
         <item name="android:layout_height">0dp</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:textSize">32sp</item>
+        <item name="android:textSize">24sp</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_weight">1</item>
     </style>
@@ -38,7 +38,7 @@
     <style name="Artisheading">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_margin">32dp</item>
     </style>
@@ -46,7 +46,7 @@
     <style name="SongHeading">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_margin">32dp</item>
     </style>
@@ -54,7 +54,7 @@
     <style name="SongName">
         <item name="android:layout_height">0dp</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:textSize">32sp</item>
+        <item name="android:textSize">24sp</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_weight">1</item>
     </style>
@@ -63,7 +63,22 @@
         <item name="android:layout_width">150dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_centerInParent">true</item>
-        <item name="android:layout_margin">16dp</item>
+        <item name="android:layout_margin">24dp</item>
         <item name="android:background">#FF8A80</item>
+    </style>
+
+    <style name="ActivityDescription">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:layout_margin">16dp</item>
+    </style>
+
+    <style name='SongListView'>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">6</item>
     </style>
 </resources>
