@@ -1,0 +1,220 @@
+<!-- Copyright (C) 2016 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <!-- Title for the application. [CHAR LIMIT=12] -->
+    <string name="app_name">Tour Guide</string>
+
+    <!-- Category name for phrases [CHAR LIMIT=20] -->
+    <string name="category_nightclub">Nightclub</string>
+
+    <!-- Category name for the vocabulary locations for colors [CHAR LIMIT=20] -->
+    <string name="category_park">Park</string>
+
+    <!-- Category name for the vocabulary locations for numbers [CHAR LIMIT=20] -->
+    <string name="category_restaurant">Restaurant</string>
+
+    <!-- Category name for the vocabulary locations for family members [CHAR LIMIT=20] -->
+    <string name="category_casino">Casino</string>
+
+    <string name="casino_1_name">Aria Resort</string>
+    <string name="casino_1_address">3730 S Las Vegas Blvd, Las Vegas, NV 89158</string>
+    <string name="casino_1_phone">(866) 359 7111</string>
+    <string name="casino_1_web">www.aria.com</string>
+
+    <string name="casino_2_name">Cosmopolitan</string>
+    <string name="casino_2_address">3708 S Las Vegas Blvd, Las Vegas, NV 89109</string>
+    <string name="casino_2_phone">(702) 698 7000</string>
+    <string name="casino_2_web">www.cosmopolitan.com</string>
+
+    <string name="casino_3_name">El Cortez</string>
+    <string name="casino_3_address">600 Fremont St, Las Vegas, NV 89101</string>
+    <string name="casino_3_phone">(702) 385 5200</string>
+    <string name="casino_3_web">www.elcortezhotelcasino.com</string>
+
+    <string name="casino_4_name">M Resort</string>
+    <string name="casino_4_address">12300 S Las Vegas Blvd, Henderson, NV 89044</string>
+    <string name="casino_4_phone">(702) 797 1000</string>
+    <string name="casino_4_web">www.themresort.com</string>
+
+    <string name="casino_5_name">Mandala Bay</string>
+    <string name="casino_5_address">3950 S Las Vegas Blvd, Las Vegas, NV 89119</string>
+    <string name="casino_5_phone">(702) 632 7777</string>
+    <string name="casino_5_web">www.mandalaybay.com</string>
+
+    <string name="casino_6_name">MGM Grand</string>
+    <string name="casino_6_address">3799 S Las Vegas Blvd, Las Vegas, NV 89109</string>
+    <string name="casino_6_phone">(702) 891 1111</string>
+    <string name="casino_6_web">www.mgmgrand.com</string>
+
+    <string name="casino_7_name">Palms</string>
+    <string name="casino_7_address">4321 W Flamingo Rd, Las Vegas, NV 89103</string>
+    <string name="casino_7_phone">Aria Reso t</string>
+    <string name="casino_7_web">www.palms.com</string>
+
+    <string name="casino_8_name">Red Rock Casino</string>
+    <string name="casino_8_address">11011 W Charleston Blvd, Las Vegas, NV 89135</string>
+    <string name="casino_8_phone">(702) 797 7777</string>
+    <string name="casino_8_web">redrock.sclv.com</string>
+
+    <string name="casino_9_name">The D</string>
+    <string name="casino_9_address">301 Fremont St, Las Vegas, NV 89101</string>
+    <string name="casino_9_phone">(702) 388 2400</string>
+    <string name="casino_9_web">www.thed.com</string>
+
+    <string name="casino_10_name">The Venetian</string>
+    <string name="casino_10_address">3355 S Las Vegas Blvd, Las Vegas, NV 89109</string>
+    <string name="casino_10_phone">(702) 414 1000</string>
+    <string name="casino_10_web">www.venetian.com</string>
+
+    <string name="nightclub_1_name">Drai</string>
+    <string name="nightclub_1_address">3595 S Las Vegas Blvd, Las Vegas, NV 89109</string>
+    <string name="nightclub_1_phone">(702) 777 3800</string>
+    <string name="nightclub_1_web">www.aria.com</string>
+
+    <string name="nightclub_2_name">Foxtail</string>
+    <string name="nightclub_2_address">2535 S Las Vegas Blvd, Las Vegas, NV 89109</string>
+    <string name="nightclub_2_phone">(702) 761 7619</string>
+    <string name="nightclub_2_web">www.foxtailnightclub.com</string>
+
+    <string name="nightclub_3_name">Hakkasan</string>
+    <string name="nightclub_3_address">3799 S Las Vegas Blvd, Las Vegas, NV 89109</string>
+    <string name="nightclub_3_phone">(702) 891 3838</string>
+    <string name="nightclub_3_web">www.hakkasanlv.com</string>
+
+    <string name="nightclub_4_name">Hyde Bellagio</string>
+    <string name="nightclub_4_address">3600 S Las Vegas Blvd, Las Vegas, NV 89109</string>
+    <string name="nightclub_4_phone">(702) 693 8700</string>
+    <string name="nightclub_4_web">www.bellagio.com</string>
+
+    <string name="nightclub_5_name">The Light</string>
+    <string name="nightclub_5_address">3950 S Las Vegas Blvd, Las Vegas, NV 89119</string>
+    <string name="nightclub_5_phone">(702) 632 4700</string>
+    <string name="nightclub_5_web">www.thelightvegas.com</string>
+
+    <string name="nightclub_6_name">Marquee</string>
+    <string name="nightclub_6_address">3708 W Harmon Ave, Las Vegas, NV 89109</string>
+    <string name="nightclub_6_phone">(702) 333 9000</string>
+    <string name="nightclub_6_web">www.marqueelasvegas.com</string>
+
+    <string name="nightclub_7_name">Omnia</string>
+    <string name="nightclub_7_address">3570 S Las Vegas Blvd, Las Vegas, NV 89109</string>
+    <string name="nightclub_7_phone">(702) 785 6200</string>
+    <string name="nightclub_7_web">www.omnianightclub.com</string>
+
+    <string name="nightclub_8_name">The Sayers</string>
+    <string name="nightclub_8_address">2535 S Las Vegas Blvd, Las Vegas, NV 89109</string>
+    <string name="nightclub_8_phone">(702) 761 7618</string>
+    <string name="nightclub_8_web">www.sayers.com</string>
+
+    <string name="nightclub_9_name">Tao</string>
+    <string name="nightclub_9_address">3377 S Las Vegas Blvd, Las Vegas, NV 89109</string>
+    <string name="nightclub_9_phone">(702) 388 8588</string>
+    <string name="nightclub_9_web">www.taolasvegas.com</string>
+
+    <string name="nightclub_10_name">XS</string>
+    <string name="nightclub_10_address">3131 S Las Vegas Blvd, Las Vegas, NV 89109</string>
+    <string name="nightclub_10_phone">(702) 770 0097</string>
+    <string name="nightclub_10_web">www.xslasvegas.com</string>
+
+    <string name="restaurant_1_name">Bacchanal</string>
+    <string name="restaurant_1_address">3570 S Las Vegas Blvd, Las Vegas, NV 89109</string>
+    <string name="restaurant_1_phone">(702) 731 7928</string>
+    <string name="restaurant_1_web">www.caesars.com</string>
+
+    <string name="restaurant_2_name">Carnevino</string>
+    <string name="restaurant_2_address">3325 S Las Vegas Blvd, Las Vegas, NV 89109</string>
+    <string name="restaurant_2_phone">(702) 789 4141</string>
+    <string name="restaurant_2_web">www.carnevino.com</string>
+
+    <string name="restaurant_3_name">Gordon Steak</string>
+    <string name="restaurant_3_address">3655 S Las Vegas Blvd, Las Vegas, NV 89109</string>
+    <string name="restaurant_3_phone">(877) 346 4642</string>
+    <string name="restaurant_3_web">www.caesars.com</string>
+
+    <string name="restaurant_4_name">Guy Savoy</string>
+    <string name="restaurant_4_address">3570 S Las Vegas Blvd, Las Vegas, NV 89109</string>
+    <string name="restaurant_4_phone">(702) 731 7286</string>
+    <string name="restaurant_4_web">www.guysavoy.com</string>
+
+    <string name="restaurant_5_name">Milos</string>
+    <string name="restaurant_5_address">3708 S Las Vegas Blvd, Las Vegas, NV 89109</string>
+    <string name="restaurant_5_phone">(702) 698 7930</string>
+    <string name="restaurant_5_web">www.cosmopolitanlasvegas.com</string>
+
+    <string name="restaurant_6_name">Picasso</string>
+    <string name="restaurant_6_address">3600 S Las Vegas Blvd, Las Vegas, NV 89109</string>
+    <string name="restaurant_6_phone">(702) 693 8865</string>
+    <string name="restaurant_6_web">www.bellagio.com</string>
+
+    <string name="restaurant_7_name">Joel Robuchon</string>
+    <string name="restaurant_7_address">3799 S Las Vegas Blvd, Las Vegas, NV 89109</string>
+    <string name="restaurant_7_phone">(702) 891 7358</string>
+    <string name="restaurant_7_web">www.joel-robuchon.com</string>
+
+    <string name="restaurant_8_name">Sage</string>
+    <string name="restaurant_8_address">3730 S Las Vegas Blvd, Las Vegas, NV 89109</string>
+    <string name="restaurant_8_phone">(702) 590 8690</string>
+    <string name="restaurant_8_web">www.aria.com</string>
+
+    <string name="restaurant_9_name">Top of the World</string>
+    <string name="restaurant_9_address">2000 S Las Vegas Blvd, Las Vegas, NV 89104</string>
+    <string name="restaurant_9_phone">(702) 380 7777</string>
+    <string name="restaurant_9_web">www.topoftheworldlv.com</string>
+
+    <string name="restaurant_10_name">Twist</string>
+    <string name="restaurant_10_address">3752 S Las Vegas Blvd, Las Vegas, NV 89158</string>
+    <string name="restaurant_10_phone">(888) 881 9367</string>
+    <string name="restaurant_10_web">www.mandarinoriental.com</string>
+
+    <string name="park_1_name">Floyd Lamb</string>
+    <string name="park_1_address">9200 Tule Springs Rd, Las Vegas, NV 89131</string>
+    <string name="park_1_phone">(702) 229 8100</string>
+
+    <string name="park_2_name">Hemenway Valley</string>
+    <string name="park_2_address">401 Ville Dr, Boulder City, NV 89005</string>
+    <string name="park_2_phone">(702) 293 9256</string>
+
+    <string name="park_3_name">Lake Mead</string>
+    <string name="park_3_address">Temple Bar Marina, AZ 86443</string>
+    <string name="park_3_phone">(702) 293 8990</string>
+
+    <string name="park_4_name">Mount Charleston</string>
+    <string name="park_4_address">Las Vegas, NV 89124t</string>
+    <string name="park_4_phone">Not Available</string>
+
+    <string name="park_5_name">Red Rock Canyon</string>
+    <string name="park_5_address">1000 Scenic Loop Dr, Las Vegas, NV 89161</string>
+    <string name="park_5_phone">(702) 515 5350</string>
+
+    <string name="park_6_name">Spring Mountain Ranch</string>
+    <string name="park_6_address">6375 Nevada 159, Blue Diamond, NV 89004</string>
+    <string name="park_6_phone">(702) 875 4141</string>
+
+    <string name="park_7_name">Springs Preserve</string>
+    <string name="park_7_address">333 S Valley View Blvd, Las Vegas, NV 89107</string>
+    <string name="park_7_phone">(702) 822 7700</string>
+
+    <string name="park_8_name">Sunset Park</string>
+    <string name="park_8_address">2601 East Sunset Road, Las Vegas, NV 89120</string>
+    <string name="park_8_phone">(702) 455 8200</string>
+
+    <string name="park_9_name">Valley of Fire</string>
+    <string name="park_9_address">Valley of Fire Hwy, Moapa Valley, NV 89040</string>
+    <string name="park_9_phone">(702) 397 2088</string>
+
+    <string name="park_10_name">Wetlands</string>
+    <string name="park_10_address">7050 Wetlands Park Ln, Las Vegas, NV 89122</string>
+    <string name="park_10_phone">(702) 455 7522</string>
+</resources>
