@@ -11,7 +11,7 @@ import com.example.android.inventory.data.InventoryContract.InventoryEntry;
 
 public class InventoryDbHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "inventory.db";
+    private static final String DATABASE_NAME = "initial_inventory.db";
     private static final int DATABASE_VERSION = 1;
 
     public InventoryDbHelper(Context context) {

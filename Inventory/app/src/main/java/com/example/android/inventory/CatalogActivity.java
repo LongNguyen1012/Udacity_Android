@@ -42,14 +42,10 @@ public class CatalogActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        displayDatabaseInfo();
+        displayDatabaseInfo(loadData());
     }
 
-    /**
-     * Temporary helper method to display information in the onscreen TextView about the state of
-     * the inventory database.
-     */
-    private void displayDatabaseInfo() {
+    private Cursor loadData() {
         // To access our database, we instantiate our subclass of SQLiteOpenHelper
         // and pass the context, which is the current activity.
         InventoryDbHelper mDbHelper = new InventoryDbHelper(this);
@@ -78,6 +74,13 @@ public class CatalogActivity extends AppCompatActivity {
                 null,
                 null
         );
+        return cursor;
+    }
+    /**
+     * Temporary helper method to display information in the onscreen TextView about the state of
+     * the inventory database.
+     */
+    private void displayDatabaseInfo(Cursor cursor) {
         try {
             // Display the number of rows in the Cursor (which reflects the number of rows in the
             // inventory table in the database).
