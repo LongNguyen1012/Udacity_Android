@@ -30,6 +30,8 @@ public final class InventoryContract {
         public final static String COLUMN_PRICE = "price";
         public final static String COLUMN_CONDITION = "condition";
         public final static String COLUMN_QUANTITY = "quantity";
+        public final static String COLUMN_SUPPLIER_CONTACT = "supplier";
+        public final static String COLUMN_IMAGE = "image";
 
         public static final int CONDITION_UNKNOWN = 0;
         public static final int CONDITION_NEW = 1;
@@ -53,7 +55,7 @@ public final class InventoryContract {
                 ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_INVENTORY;
 
         /**
-         * The MIME type of the {@link #CONTENT_URI} for a single pet.
+         * The MIME type of the {@link #CONTENT_URI} for a single item.
          */
         public static final String CONTENT_ITEM_TYPE =
                 ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_INVENTORY;

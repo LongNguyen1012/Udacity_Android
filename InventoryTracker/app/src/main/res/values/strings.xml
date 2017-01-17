@@ -106,4 +106,6 @@
 
     <!-- Label for the item's condition if the condition is unknown [CHAR LIMIT=20] -->
     <string name="unknown_sale">Unknown sale</string>
+    <string name="category_supplier">Supplier</string>
+    <string name="hint_item_supplier">Phone</string>
 </resources>

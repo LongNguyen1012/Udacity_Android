@@ -11,6 +11,8 @@ import android.util.Log;
 
 import com.example.android.inventory.data.InventoryContract.InventoryEntry;
 
+import java.util.regex.Pattern;
+
 /**
  * {@link ContentProvider} for Pets app.
  */
@@ -135,6 +137,12 @@ public class InventoryProvider extends ContentProvider {
         }
 
         // If the quantity is provided, check that it's greater than or equal to 0 kg
+        String phone = values.getAsString(InventoryEntry.COLUMN_SUPPLIER_CONTACT);
+        if (!Pattern.matches("[0-9]+", phone) && phone.length() != 10) {
+            throw new IllegalArgumentException("Inventory requires valid supplier's phone number");
+        }
+
+        // If the quantity is provided, check that it's greater than or equal to 0 kg
         Double price = values.getAsDouble(InventoryEntry.COLUMN_PRICE);
         if (price != null && price < 0) {
             throw new IllegalArgumentException("Inventory requires valid price");
@@ -212,6 +220,14 @@ public class InventoryProvider extends ContentProvider {
             Integer sale = values.getAsInteger(InventoryEntry.COLUMN_SALE);
             if (sale != null && sale < 0) {
                 throw new IllegalArgumentException("Inventory requires valid sale");
+            }
+        }
+
+        if (values.containsKey(InventoryEntry.COLUMN_SUPPLIER_CONTACT)) {
+            // Check that the phone is greater than or equal to 0 kg
+            String phone = values.getAsString(InventoryEntry.COLUMN_SUPPLIER_CONTACT);
+            if (!Pattern.matches("[0-9]+", phone) && phone.length() != 10) {
+                throw new IllegalArgumentException("Inventory requires valid suplier's phone number");
             }
         }
 

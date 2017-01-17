@@ -15,37 +15,71 @@
  */
 package com.example.android.inventory;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.LoaderManager;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.CursorLoader;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.inventory.data.InventoryContract;
 import com.example.android.inventory.data.InventoryContract.InventoryEntry;
 import com.example.android.inventory.data.InventoryDbHelper;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.Blob;
+
+import static android.R.attr.data;
+import static android.R.attr.id;
+import static com.example.android.inventory.InventoryCursorAdapter.GET_FROM_GALLERY;
+
 /**
  * Allows user to create a new pet or edit an existing one.
  */
 public class EditorActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
+    private Uri imgUpdate;
+
+    private byte[] byteArray;
+
+    private FloatingActionButton fab;
+
+    private FloatingActionButton fabimg;
+
+    private ImageView mImage;
+
+    private Button increase;
+
+    private Button decrease;
     /**
      * EditText field to enter the pet's name
      */
@@ -55,6 +89,8 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
      * EditText field to enter the pet's breed
      */
     private EditText mSaleEditText;
+
+    private EditText mPhoneEditText;
 
     /**
      * EditText field to enter the pet's weight
@@ -77,6 +113,8 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     private int mCondition = 0;
 
     private static final int EXISTING_INVENTORY_LOADER = 0;
+
+    public static final int GET_FROM_GALLERY_NEW_ITEM = 1;
 
     private Uri mCurrentInventoryUri;
 
@@ -173,31 +211,64 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         Intent intent = getIntent();
         mCurrentInventoryUri = intent.getData();
 
+        // Find all relevant views that we will need to read user input from
+
+        mNameEditText = (EditText) findViewById(R.id.edit_item_name);
+        mSaleEditText = (EditText) findViewById(R.id.edit_item_sale);
+        mQuantityEditText = (EditText) findViewById(R.id.edit_text_item_quantity);
+        mPhoneEditText = (EditText) findViewById(R.id.edit_item_phone);
+        mPriceEditText = (EditText) findViewById(R.id.edit_item_price);
+        mConditionSpinner = (Spinner) findViewById(R.id.spinner_gender);
+        fabimg = (FloatingActionButton) findViewById(R.id.fab_add_image);
+        mImage = (ImageView) findViewById(R.id.item_image);
+
+        mNameEditText.setOnTouchListener(mTouchListener);
+        mSaleEditText.setOnTouchListener(mTouchListener);
+        mPhoneEditText.setOnTouchListener(mTouchListener);
+        mPriceEditText.setOnTouchListener(mTouchListener);
+        mConditionSpinner.setOnTouchListener(mTouchListener);
+        mQuantityEditText.setOnTouchListener(mTouchListener);
+        fabimg.setOnTouchListener(mTouchListener);
+
+        setupSpinner();
+
         if (mCurrentInventoryUri == null) {
             // Invalidate the options menu, so the "Delete" menu option can be hidden.
             // (It doesn't make sense to delete a pet that hasn't been created yet.)
             invalidateOptionsMenu();
             setTitle(getString(R.string.editor_activity_title_new_item));
+
+            increase = (Button) findViewById(R.id.increase_button);
+            decrease = (Button) findViewById(R.id.decrease_button);
+            fab = (FloatingActionButton) findViewById(R.id.fab_order);
+
+            fab.setVisibility(View.INVISIBLE);
+            decrease.setVisibility(View.GONE);
+            increase.setVisibility(View.GONE);
+
         } else {
             setTitle(getString(R.string.editor_activity_title_edit_item));
             getLoaderManager().initLoader(EXISTING_INVENTORY_LOADER, null, this);
+
+            increase = (Button) findViewById(R.id.increase_button);
+            decrease = (Button) findViewById(R.id.decrease_button);
+            fab = (FloatingActionButton) findViewById(R.id.fab_order);
+
+            // Setup FAB to open EditorActivity
+            fab.setVisibility(View.VISIBLE);
+            decrease.setVisibility(View.VISIBLE);
+            increase.setVisibility(View.VISIBLE);
         }
 
-        // Find all relevant views that we will need to read user input from
-
-        mNameEditText = (EditText) findViewById(R.id.edit_item_name);
-        mSaleEditText = (EditText) findViewById(R.id.edit_item_sale);
-        mPriceEditText = (EditText) findViewById(R.id.edit_item_price);
-        mQuantityEditText = (EditText) findViewById(R.id.edit_pet_weight);
-        mConditionSpinner = (Spinner) findViewById(R.id.spinner_gender);
-
-        mNameEditText.setOnTouchListener(mTouchListener);
-        mSaleEditText.setOnTouchListener(mTouchListener);
-        mPriceEditText.setOnTouchListener(mTouchListener);
-        mQuantityEditText.setOnTouchListener(mTouchListener);
-        mConditionSpinner.setOnTouchListener(mTouchListener);
-
-        setupSpinner();
+        fabimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imgUpdate = ContentUris.withAppendedId(InventoryEntry.CONTENT_URI, id);
+                startActivityForResult(new Intent(Intent.ACTION_PICK,
+                                android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI),
+                        GET_FROM_GALLERY_NEW_ITEM);
+            }
+        });
     }
 
     /**
@@ -285,18 +356,32 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
         String nameString = mNameEditText.getText().toString().trim();
         String saleString = mSaleEditText.getText().toString().trim();
+        String phoneString = mPhoneEditText.getText().toString().trim();
         String priceString = mPriceEditText.getText().toString().trim();
         String quantityString = mQuantityEditText.getText().toString().trim();
 
         if (mCurrnentInventoryUri == null &&
                 TextUtils.isEmpty(nameString) && TextUtils.isEmpty(saleString) &&
                 TextUtils.isEmpty(priceString) && TextUtils.isEmpty(quantityString) &&
+                TextUtils.isEmpty(phoneString) && mImage.getDrawable() == null &&
                 mCondition == InventoryEntry.CONDITION_UNKNOWN) {return;}
+
+        if (mImage.getDrawable() != null) {
+            mImage.setDrawingCacheEnabled(true);
+            mImage.buildDrawingCache();
+            Bitmap bm = mImage.getDrawingCache();
+
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bm.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            byteArray = stream.toByteArray();
+        }
 
         ContentValues values = new ContentValues();
         values.put(InventoryEntry.COLUMN_NAME, nameString);
         values.put(InventoryEntry.COLUMN_SALE, saleString);
+        values.put(InventoryEntry.COLUMN_SUPPLIER_CONTACT, phoneString);
         values.put(InventoryEntry.COLUMN_PRICE, priceString);
+        values.put(InventoryEntry.COLUMN_IMAGE, byteArray);
         values.put(InventoryEntry.COLUMN_CONDITION, mCondition);
 
         // If the quantity is not provided by the user, don't try to parse the string into an
@@ -391,8 +476,10 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                 InventoryEntry._ID,
                 InventoryEntry.COLUMN_NAME,
                 InventoryEntry.COLUMN_SALE,
+                InventoryEntry.COLUMN_SUPPLIER_CONTACT,
                 InventoryEntry.COLUMN_PRICE,
                 InventoryEntry.COLUMN_CONDITION,
+                InventoryEntry.COLUMN_IMAGE,
                 InventoryEntry.COLUMN_QUANTITY};
 
         // This loader will execute the ContentProvider's query method on a background thread
@@ -408,30 +495,42 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     public void onLoadFinished(android.content.Loader<Cursor> loader, Cursor cursor) {
         if (cursor.moveToFirst()) {
             // Find the columns of pet attributes that we're interested in
+            int idColumnIndex = cursor.getColumnIndex(InventoryEntry._ID);
             int nameColumnIndex = cursor.getColumnIndex(InventoryEntry.COLUMN_NAME);
             int saleColumnIndex = cursor.getColumnIndex(InventoryEntry.COLUMN_SALE);
+            int phoneColumnIndex = cursor.getColumnIndex(InventoryEntry.COLUMN_SUPPLIER_CONTACT);
             int priceColumnIndex = cursor.getColumnIndex(InventoryEntry.COLUMN_PRICE);
             int conditionColumnIndex = cursor.getColumnIndex(InventoryEntry.COLUMN_CONDITION);
             int quantityColumnIndex = cursor.getColumnIndex(InventoryEntry.COLUMN_QUANTITY);
+            int imgColumnIndex = cursor.getColumnIndex(InventoryEntry.COLUMN_IMAGE);
 
             // Extract out the value from the Cursor for the given column index
+            final long id = cursor.getLong(idColumnIndex);
             String name = cursor.getString(nameColumnIndex);
+            final String phone = cursor.getString(phoneColumnIndex);
             int sale = cursor.getInt(saleColumnIndex);
             Double price = cursor.getDouble(priceColumnIndex);
             int condition = cursor.getInt(conditionColumnIndex);
-            int quantity = cursor.getInt(quantityColumnIndex);
+            final int quantity = cursor.getInt(quantityColumnIndex);
+            byte[] imgBlob = cursor.getBlob(imgColumnIndex);
 
             // Update the views on the screen with the values from the database
             mNameEditText.setText(name);
+            mPhoneEditText.setText(phone);
             mSaleEditText.setText(Integer.toString(sale));
             mPriceEditText.setText(Double.toString(price));
             mQuantityEditText.setText(Integer.toString(quantity));
+
+            if (imgBlob != null) {
+                Bitmap bmp = BitmapFactory.decodeByteArray(imgBlob, 0, imgBlob.length);
+                mImage.setImageBitmap(bmp);
+            }
 
             // Gender is a dropdown spinner, so map the constant value from the database
             // into one of the dropdown options (0 is Unknown, 1 is Male, 2 is Female).
             // Then call setSelection() so that option is displayed on screen as the current selection.
             switch (condition) {
-                case InventoryContract.InventoryEntry.CONDITION_NEW:
+                case InventoryEntry.CONDITION_NEW:
                     mConditionSpinner.setSelection(1);
                     break;
                 case InventoryEntry.CONDITION_USED:
@@ -441,11 +540,111 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                     mConditionSpinner.setSelection(0);
                     break;
             }
+
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    intent.setData(Uri.parse("tel:" + phone));
+                    startActivity(intent);
+                }
+            });
+
+            fabimg.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    imgUpdate = ContentUris.withAppendedId(InventoryEntry.CONTENT_URI, id);
+                    startActivityForResult(new Intent(Intent.ACTION_PICK,
+                                    android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI),
+                            GET_FROM_GALLERY);
+                }
+            });
+
+            increase.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int newquantity =  quantity + 1;
+
+                    Uri newUri = ContentUris.withAppendedId(InventoryEntry.CONTENT_URI, id);
+
+                    ContentValues values = new ContentValues();
+                    values.put(InventoryEntry.COLUMN_QUANTITY, newquantity);
+
+                    getContentResolver().update(newUri, values, null, null);
+                }
+            });
+
+            decrease.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int newquantity =  quantity - 1;
+
+                    Uri newUri = ContentUris.withAppendedId(InventoryEntry.CONTENT_URI, id);
+
+                    ContentValues values = new ContentValues();
+                    values.put(InventoryEntry.COLUMN_QUANTITY, newquantity);
+
+                    getContentResolver().update(newUri, values, null, null);
+                }
+            });
         }
     }
 
     @Override
     public void onLoaderReset(android.content.Loader<Cursor> loader) {
 
+    }
+
+    public static byte[] getBitmapAsByteArray(Bitmap bitmap) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 0, outputStream);
+        return outputStream.toByteArray();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        //Detects request codes
+        if(requestCode==GET_FROM_GALLERY && resultCode == Activity.RESULT_OK) {
+            Uri selectedImage = data.getData();
+            Bitmap bitmap = null;
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
+                byte[] imgdata = getBitmapAsByteArray(bitmap);
+
+                ContentValues values = new ContentValues();
+                values.put(InventoryEntry.COLUMN_IMAGE, imgdata);
+
+                getContentResolver().update(imgUpdate, values, null, null);
+
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+
+        if(requestCode==GET_FROM_GALLERY_NEW_ITEM && resultCode == Activity.RESULT_OK) {
+            Uri selectedImage = data.getData();
+            Bitmap bitmap = null;
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
+                byte[] imgdata = getBitmapAsByteArray(bitmap);
+
+                if (imgdata != null) {
+                    Bitmap bmp = BitmapFactory.decodeByteArray(imgdata, 0, imgdata.length);
+                    mImage.setImageBitmap(bmp);
+                }
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
     }
 }

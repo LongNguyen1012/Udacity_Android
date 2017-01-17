@@ -1,11 +1,13 @@
 package com.example.android.inventory;
 
+import android.Manifest;
 import android.app.LoaderManager;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -21,6 +23,8 @@ import android.widget.ListView;
 import com.example.android.inventory.data.InventoryContract;
 import com.example.android.inventory.data.InventoryContract.InventoryEntry;
 
+import static android.R.attr.data;
+
 /**
  * Displays list of inventory that were entered and stored in the app.
  */
@@ -30,12 +34,17 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
 
     private static final int INVENTORY_LOADER = 0;
 
+    private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1;
+
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         String[] projeection = {
                 InventoryEntry._ID,
                 InventoryEntry.COLUMN_NAME,
-                InventoryEntry.COLUMN_SALE};
+                InventoryEntry.COLUMN_SALE,
+                InventoryEntry.COLUMN_PRICE,
+                InventoryEntry.COLUMN_IMAGE,
+                InventoryEntry.COLUMN_QUANTITY };
 
         return new CursorLoader(this, InventoryEntry.CONTENT_URI, projeection, null, null, null);
     }
@@ -54,6 +63,25 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catalog);
+
+
+        if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            // Should we show an explanation?
+            if (shouldShowRequestPermissionRationale(
+                    Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                // Explain to the user why we need to read the contacts
+            }
+
+            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
+
+            // MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE is an
+            // app-defined int constant that should be quite unique
+
+            return;
+        }
 
         // Setup FAB to open EditorActivity
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -94,11 +122,12 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
         return true;
     }
 
-    private void insertInventory() {
+    public void insertInventory() {
         ContentValues values = new ContentValues();
         values.put(InventoryEntry.COLUMN_NAME, "TV");
-        values.put(InventoryEntry.COLUMN_SALE, "240");
-        values.put(InventoryEntry.COLUMN_PRICE, "399.99");
+        values.put(InventoryEntry.COLUMN_SALE, 240);
+        values.put(InventoryEntry.COLUMN_SUPPLIER_CONTACT, "7025251234");
+        values.put(InventoryEntry.COLUMN_PRICE, 399.99);
         values.put(InventoryEntry.COLUMN_CONDITION, InventoryEntry.CONDITION_NEW);
         values.put(InventoryEntry.COLUMN_QUANTITY, 7);
 

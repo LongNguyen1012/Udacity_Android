@@ -11,120 +11,208 @@
      limitations under the License.
 -->
 <!-- Layout for the editor -->
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="@dimen/activity_margin"
-    tools:context=".EditorActivity">
+    android:layout_height="match_parent">
 
-    <!-- Overview category -->
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:padding="@dimen/activity_margin"
+        tools:context=".EditorActivity">
 
-        <!-- Label -->
-        <TextView
-            android:text="@string/category_overview"
-            style="@style/CategoryStyle" />
-
-        <!-- Input fields -->
+        <!-- Overview category -->
         <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="2"
-            android:paddingLeft="4dp"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
-            <!-- Name field -->
-            <EditText
-                android:id="@+id/edit_item_name"
-                android:hint="@string/hint_item_name"
-                android:inputType="textCapWords"
-                style="@style/EditorFieldStyle" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <!-- Sale field -->
-            <EditText
-                android:id="@+id/edit_item_sale"
-                android:hint="@string/hint_item_sale"
-                android:inputType="textCapWords"
-                style="@style/EditorFieldStyle" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/category_overview"
+                    style="@style/CategoryStyle" />
+
+                <ImageView
+                    android:id="@+id/item_image"
+                    android:layout_width="110dp"
+                    android:layout_height="85dp"
+                    android:paddingRight="6dp"
+                    android:scaleType="centerCrop"/>
+
+            </LinearLayout>
 
             <!-- Input fields -->
-            <RelativeLayout
+            <LinearLayout
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:paddingLeft="4dp">
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:paddingLeft="4dp"
+                android:orientation="vertical">
 
-                <!-- Units for price ($) -->
-                <TextView
-                    android:id="@+id/label_money_units"
-                    android:text="@string/unit_money"
-                    style="@style/EditorUnitsStyle"/>
-
-                <!-- Prce field -->
+                <!-- Name field -->
                 <EditText
-                    android:id="@+id/edit_item_price"
-                    android:hint="@string/hint_item_price"
+                    android:id="@+id/edit_item_name"
+                    android:hint="@string/hint_item_name"
                     android:inputType="textCapWords"
                     style="@style/EditorFieldStyle" />
 
-            </RelativeLayout>
+                <!-- Sale field -->
+                <EditText
+                    android:id="@+id/edit_item_sale"
+                    android:hint="@string/hint_item_sale"
+                    android:inputType="textCapWords"
+                    style="@style/EditorFieldStyle" />
+
+                <!-- Input fields -->
+                <RelativeLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+
+                    <!-- Units for price ($) -->
+                    <TextView
+                        android:id="@+id/label_money_units"
+                        android:text="@string/unit_money"
+                        style="@style/EditorUnitsStyle"/>
+
+                    <!-- Price field -->
+                    <EditText
+                        android:id="@+id/edit_item_price"
+                        android:hint="@string/hint_item_price"
+                        android:inputType="textCapWords"
+                        style="@style/EditorFieldStyle" />
+
+                </RelativeLayout>
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
-    <!-- Gender category -->
-    <LinearLayout
-        android:id="@+id/container_gender"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <!-- Label -->
-        <TextView
-            android:text="@string/category_condition"
-            style="@style/CategoryStyle" />
-
-        <!-- Input field -->
+        <!-- Measurement category -->
         <LinearLayout
+            android:id="@+id/container_supplier"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="2"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
-            <!-- Gender drop-down spinner -->
-            <Spinner
-                android:id="@+id/spinner_gender"
-                android:layout_height="48dp"
-                android:layout_width="wrap_content"
-                android:paddingRight="16dp"
-                android:spinnerMode="dropdown"/>
+            <!-- Label -->
+            <TextView
+                android:text="@string/category_supplier"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                style="@style/CategoryStyle" />
+
+            <EditText
+                android:id="@+id/edit_item_phone"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="4"
+                android:paddingLeft="8dp"
+                android:hint="@string/hint_item_supplier"
+                android:inputType="number"
+                style="@style/EditorFieldStyle" />
+
         </LinearLayout>
-    </LinearLayout>
 
-    <!-- Measurement category -->
-    <LinearLayout
-        android:id="@+id/container_measurement"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <!-- Label -->
-        <TextView
-            android:text="@string/category_quantity"
-            style="@style/CategoryStyle" />
-
-        <EditText
+        <!-- Gender category -->
+        <LinearLayout
+            android:id="@+id/container_gender"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="2"
-            android:id="@+id/edit_pet_weight"
-            android:hint="@string/hint_item_quantity"
-            android:inputType="number"
-            style="@style/EditorFieldStyle" />
+            android:orientation="horizontal">
 
+            <!-- Label -->
+            <TextView
+                android:text="@string/category_condition"
+                style="@style/CategoryStyle" />
+
+            <!-- Input field -->
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <!-- Gender drop-down spinner -->
+                <Spinner
+                    android:id="@+id/spinner_gender"
+                    android:layout_height="48dp"
+                    android:layout_width="wrap_content"
+                    android:paddingRight="16dp"
+                    android:spinnerMode="dropdown"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Measurement category -->
+        <LinearLayout
+            android:id="@+id/container_measurement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Label -->
+            <TextView
+                android:text="@string/category_quantity"
+                style="@style/CategoryStyle" />
+
+            <Button
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:text="+"
+                android:id="@+id/increase_button"
+                android:layout_marginBottom="16dp"
+                android:layout_marginRight="8dp"
+                android:onClick="increment"/>
+
+            <EditText
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:id="@+id/edit_text_item_quantity"
+                android:hint="@string/hint_item_quantity"
+                android:inputType="number"
+                style="@style/EditorFieldStyle" />
+
+            <Button
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:text="-"
+                android:layout_marginBottom="16dp"
+                android:id="@+id/decrease_button"
+                android:layout_marginLeft="8dp"
+                android:onClick="decrement"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_margin="@dimen/fab_margin"
+                android:src="@drawable/ic_order"/>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab_add_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_margin="@dimen/fab_margin"
+                android:src="@drawable/ic_add_image"/>
+
+        </RelativeLayout>
     </LinearLayout>
-</LinearLayout>
+</ScrollView>
