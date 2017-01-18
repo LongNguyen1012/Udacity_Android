@@ -15,7 +15,6 @@
  */
 package com.example.android.inventory;
 
-import android.Manifest;
 import android.app.Activity;
 import android.app.LoaderManager;
 import android.content.ContentUris;
@@ -23,7 +22,6 @@ import android.content.ContentValues;
 import android.content.CursorLoader;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -35,7 +33,6 @@ import android.support.v4.app.NavUtils;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -46,19 +43,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.inventory.data.InventoryContract;
 import com.example.android.inventory.data.InventoryContract.InventoryEntry;
-import com.example.android.inventory.data.InventoryDbHelper;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.Blob;
 
-import static android.R.attr.data;
 import static android.R.attr.id;
 import static com.example.android.inventory.InventoryCursorAdapter.GET_FROM_GALLERY;
 
@@ -66,10 +59,6 @@ import static com.example.android.inventory.InventoryCursorAdapter.GET_FROM_GALL
  * Allows user to create a new pet or edit an existing one.
  */
 public class EditorActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
-
-    private Uri imgUpdate;
-
-    private byte[] byteArray;
 
     private FloatingActionButton fab;
 
@@ -80,41 +69,28 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     private Button increase;
 
     private Button decrease;
-    /**
-     * EditText field to enter the pet's name
-     */
+
     private EditText mNameEditText;
 
-    /**
-     * EditText field to enter the pet's breed
-     */
     private EditText mSaleEditText;
 
     private EditText mPhoneEditText;
 
-    /**
-     * EditText field to enter the pet's weight
-     */
     private EditText mQuantityEditText;
 
-    /**
-     * EditText field to enter the pet's gender
-     */
     private Spinner mConditionSpinner;
 
     private EditText mPriceEditText;
 
-    private InventoryDbHelper mDbHelper;
-
-    /**
-     * Gender of the pet. The possible values are:
-     * 0 for unknown gender, 1 for male, 2 for female.
-     */
     private int mCondition = 0;
 
     private static final int EXISTING_INVENTORY_LOADER = 0;
 
     public static final int GET_FROM_GALLERY_NEW_ITEM = 1;
+
+    private Uri imgUpdate;
+
+    private byte[] byteArray;
 
     private Uri mCurrentInventoryUri;
 
@@ -360,10 +336,10 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         String priceString = mPriceEditText.getText().toString().trim();
         String quantityString = mQuantityEditText.getText().toString().trim();
 
-        if (mCurrnentInventoryUri == null &&
-                TextUtils.isEmpty(nameString) && TextUtils.isEmpty(saleString) &&
-                TextUtils.isEmpty(priceString) && TextUtils.isEmpty(quantityString) &&
-                TextUtils.isEmpty(phoneString) && mImage.getDrawable() == null &&
+        if (mCurrnentInventoryUri == null ||
+                TextUtils.isEmpty(nameString) || TextUtils.isEmpty(saleString) ||
+                TextUtils.isEmpty(priceString) || TextUtils.isEmpty(quantityString) ||
+                TextUtils.isEmpty(phoneString) || mImage.getDrawable() == null ||
                 mCondition == InventoryEntry.CONDITION_UNKNOWN) {return;}
 
         if (mImage.getDrawable() != null) {

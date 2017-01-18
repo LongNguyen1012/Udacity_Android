@@ -106,6 +106,22 @@
 
     <!-- Label for the item's condition if the condition is unknown [CHAR LIMIT=20] -->
     <string name="unknown_sale">Unknown sale</string>
+
     <string name="category_supplier">Supplier</string>
+
     <string name="hint_item_supplier">Phone</string>
+
+    <string name="insert_negative_quantity">Quantity can\'t be negative!</string>
+
+    <string name="insert_negative_sale">Sale can\'t be negative!</string>
+
+    <string name="insert_invalid_phone">Invalid phone number!</string>
+
+    <string name="insert_negative_price">Price can\'t be negative!</string>
+
+    <string name="no_name">Inventory needs a name!</string>
+
+    <string name="invalid_condition">Condition is invalid!</string>
+
+    <string name="order_more">Quantity is zero. Please order more!</string>
 </resources>

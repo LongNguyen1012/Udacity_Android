@@ -8,7 +8,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.example.android.inventory.R;
 import com.example.android.inventory.data.InventoryContract.InventoryEntry;
 
 import java.util.regex.Pattern;
@@ -115,37 +117,43 @@ public class InventoryProvider extends ContentProvider {
         // Check that the name is not null
         String name = values.getAsString(InventoryEntry.COLUMN_NAME);
         if (name == null) {
-            throw new IllegalArgumentException("Inventory requires a name");
+            Toast.makeText(getContext(), R.string.no_name, Toast.LENGTH_SHORT).show();
+            return null;
         }
 
         // Check that the condition is valid
         Integer condition = values.getAsInteger(InventoryEntry.COLUMN_CONDITION);
         if (condition == null || !InventoryEntry.isValidCondition(condition)) {
-            throw new IllegalArgumentException("Inventory requires valid condition");
+            Toast.makeText(getContext(), R.string.invalid_condition, Toast.LENGTH_SHORT).show();
+            return null;
         }
 
         // If the quantity is provided, check that it's greater than or equal to 0 kg
         Integer quantity = values.getAsInteger(InventoryEntry.COLUMN_QUANTITY);
         if (quantity != null && quantity < 0) {
-            throw new IllegalArgumentException("Inventory requires valid quantity");
+            Toast.makeText(getContext(), R.string.insert_negative_quantity, Toast.LENGTH_SHORT).show();
+            return null;
         }
 
         // If the quantity is provided, check that it's greater than or equal to 0 kg
         Integer sale = values.getAsInteger(InventoryEntry.COLUMN_SALE);
         if (sale != null && sale < 0) {
-            throw new IllegalArgumentException("Inventory requires valid sale amount");
+            Toast.makeText(getContext(), R.string.insert_negative_sale, Toast.LENGTH_SHORT).show();
+            return null;
         }
 
         // If the quantity is provided, check that it's greater than or equal to 0 kg
         String phone = values.getAsString(InventoryEntry.COLUMN_SUPPLIER_CONTACT);
         if (!Pattern.matches("[0-9]+", phone) && phone.length() != 10) {
-            throw new IllegalArgumentException("Inventory requires valid supplier's phone number");
+            Toast.makeText(getContext(), R.string.insert_invalid_phone, Toast.LENGTH_SHORT).show();
+            return null;
         }
 
         // If the quantity is provided, check that it's greater than or equal to 0 kg
         Double price = values.getAsDouble(InventoryEntry.COLUMN_PRICE);
         if (price != null && price < 0) {
-            throw new IllegalArgumentException("Inventory requires valid price");
+            Toast.makeText(getContext(), R.string.insert_negative_price, Toast.LENGTH_SHORT).show();
+            return null;
         }
 
         SQLiteDatabase database = mDbHelper.getWritableDatabase();
@@ -192,7 +200,9 @@ public class InventoryProvider extends ContentProvider {
         if (values.containsKey(InventoryEntry.COLUMN_NAME)) {
             String name = values.getAsString(InventoryContract.InventoryEntry.COLUMN_NAME);
             if (name == null) {
-                throw new IllegalArgumentException("Inventory requires a name");
+                Toast.makeText(getContext(), R.string.no_name, Toast.LENGTH_SHORT).show();
+                //updateok = false;
+                return 0;
             }
         }
 
@@ -201,7 +211,9 @@ public class InventoryProvider extends ContentProvider {
         if (values.containsKey(InventoryEntry.COLUMN_CONDITION)) {
             Integer condition = values.getAsInteger(InventoryEntry.COLUMN_CONDITION);
             if (condition == null || !InventoryEntry.isValidCondition(condition)) {
-                throw new IllegalArgumentException("Inventory requires valid condition");
+                Toast.makeText(getContext(), R.string.invalid_condition, Toast.LENGTH_SHORT).show();
+                //updateok = false;
+                return 0;
             }
         }
 
@@ -211,7 +223,9 @@ public class InventoryProvider extends ContentProvider {
             // Check that the quantity is greater than or equal to 0 kg
             Integer quantity = values.getAsInteger(InventoryEntry.COLUMN_QUANTITY);
             if (quantity != null && quantity < 0) {
-                throw new IllegalArgumentException("Inventory requires valid quantity");
+                Toast.makeText(getContext(), R.string.order_more, Toast.LENGTH_SHORT).show();
+                //updateok = false;
+                return 0;
             }
         }
 
@@ -219,7 +233,9 @@ public class InventoryProvider extends ContentProvider {
             // Check that the sale is greater than or equal to 0 kg
             Integer sale = values.getAsInteger(InventoryEntry.COLUMN_SALE);
             if (sale != null && sale < 0) {
-                throw new IllegalArgumentException("Inventory requires valid sale");
+                Toast.makeText(getContext(), R.string.insert_negative_sale, Toast.LENGTH_SHORT).show();
+                //updateok = false;
+                return 0;
             }
         }
 
@@ -227,7 +243,9 @@ public class InventoryProvider extends ContentProvider {
             // Check that the phone is greater than or equal to 0 kg
             String phone = values.getAsString(InventoryEntry.COLUMN_SUPPLIER_CONTACT);
             if (!Pattern.matches("[0-9]+", phone) && phone.length() != 10) {
-                throw new IllegalArgumentException("Inventory requires valid suplier's phone number");
+                Toast.makeText(getContext(), R.string.insert_invalid_phone, Toast.LENGTH_SHORT).show();
+                //updateok = false;
+                return 0;
             }
         }
 
@@ -235,7 +253,9 @@ public class InventoryProvider extends ContentProvider {
             // Check that the price is greater than or equal to 0 kg
             Double price = values.getAsDouble(InventoryEntry.COLUMN_PRICE);
             if (price != null && price < 0) {
-                throw new IllegalArgumentException("Inventory requires valid price");
+                Toast.makeText(getContext(), R.string.insert_negative_price, Toast.LENGTH_SHORT).show();
+                //updateok = false;
+                return 0;
             }
         }
         // If there are no values to update, then don't try to update the database
