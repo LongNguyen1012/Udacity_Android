@@ -273,7 +273,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                     } else if (selection.equals(getString(R.string.condition_used))) {
                         mCondition = InventoryEntry.CONDITION_USED; // Female
                     } else {
-                        mCondition = InventoryContract.InventoryEntry.CONDITION_UNKNOWN; // Unknown
+                        mCondition = InventoryEntry.CONDITION_UNKNOWN; // Unknown
                     }
                 }
             }
@@ -336,11 +336,9 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         String priceString = mPriceEditText.getText().toString().trim();
         String quantityString = mQuantityEditText.getText().toString().trim();
 
-        if (mCurrnentInventoryUri == null ||
-                TextUtils.isEmpty(nameString) || TextUtils.isEmpty(saleString) ||
+        if (TextUtils.isEmpty(nameString) || TextUtils.isEmpty(saleString) ||
                 TextUtils.isEmpty(priceString) || TextUtils.isEmpty(quantityString) ||
-                TextUtils.isEmpty(phoneString) || mImage.getDrawable() == null ||
-                mCondition == InventoryEntry.CONDITION_UNKNOWN) {return;}
+                TextUtils.isEmpty(phoneString)) {return;}
 
         if (mImage.getDrawable() != null) {
             mImage.setDrawingCacheEnabled(true);
